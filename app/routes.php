@@ -15,8 +15,9 @@ return function (App $app) {
         return $response;
     });
 
-    $app->get('/', function (Request $request, Response $response) {
-        $response->getBody()->write('Hello world!');
+    $app->get('/hello/{name}', function (Request $request, Response $response, array $args) {
+        $name = $args['name'];
+        $response->getBody()->write('Hello world!' .  $name);
         return $response;
     });
 
