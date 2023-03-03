@@ -27,7 +27,11 @@ return function (App $app) {
     // });
 
     $app->get('/hello', function (Request $request, Response $response, array $args) {
-        $response->getBody()->write('Hello I am using the slim framework');
-        return $response;
+        // $response->getBody()->write('Hello I am using the slim framework');
+        // return $response;
+        $payload = json_encode(['hello' => 'world'], JSON_PRETTY_PRINT);
+    $response->getBody()->write($payload);
+    return $response->withHeader('Content-Type', 'application/json');
+
     });
 };
